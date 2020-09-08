@@ -12,20 +12,27 @@ public class RocketLauncher : MonoBehaviour
     private Transform _shotPos;
 
     [SerializeField]
-    private float _powerRecoil;
+    private float _powerRecoil, _timeBeforShotConst;
+    private float _timeBeforShot;
 
     void Start()
     {
-        
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (_timeBeforShot>0)
+        {
+            _timeBeforShot -= Time.fixedDeltaTime;
+        }
     }
     public void Shot()
     {
-        _rbСarrier.velocity = -transform.forward * 2;
-        Instantiate(_roket,_shotPos.position,transform.rotation);
+        if (_timeBeforShot<=0)
+        {
+            _rbСarrier.AddForce(-transform.forward * 200, ForceMode.Acceleration);
+            Instantiate(_roket, _shotPos.position, transform.rotation);
+            _timeBeforShot = _timeBeforShotConst;
+        }
     }
 }

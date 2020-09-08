@@ -6,6 +6,8 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField]
     private float _speed, _radius, _forse;
+    [SerializeField]
+    private GameObject _explosion;
     void FixedUpdate()
     {
         transform.Translate(Vector3.forward * _speed);
@@ -27,6 +29,8 @@ public class Rocket : MonoBehaviour
                     Player.AddExplosionForce(_forse, hit.point, _radius,0,ForceMode.Acceleration);
                 }
             }
+            Instantiate(_explosion, transform.position, transform.rotation);
+
             Destroy(gameObject);
         }
     }

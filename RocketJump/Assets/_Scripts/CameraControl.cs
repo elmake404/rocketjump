@@ -34,9 +34,6 @@ public class CameraControl : MonoBehaviour
             {
                 _player.ShotDirection(_currentMousePos - _startMousePos);
             }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
             _player._rocketLauncher.Shot();
         }
 
