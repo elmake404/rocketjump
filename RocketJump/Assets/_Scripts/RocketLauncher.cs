@@ -23,9 +23,9 @@ public class RocketLauncher : MonoBehaviour
     {
         
     }
-    public void Shot(Vector3 direction)
+    public void Shot()
     {
-        _rbСarrier.velocity = direction * 2;
+        _rbСarrier.velocity = -transform.forward * 2;
         Instantiate(_roket,_shotPos.position,transform.rotation);
     }
 }

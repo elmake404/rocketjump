@@ -6,12 +6,8 @@ public class Platforms : MonoBehaviour
 {
     [SerializeField]
     private Collider _collider;
-    void Start()
-    {
-        _collider.isTrigger = true;
-    }
 
-    void Update()
+    private void FixedUpdate()
     {
         CalculatePosition();
     }
@@ -19,10 +15,7 @@ public class Platforms : MonoBehaviour
     {
         Vector3 Pos = Player.TransformMain.position;
         Pos.y -= 1;
-        if (transform.position.y<=Pos.y)
-        {
-            _collider.isTrigger = false;
-        }
+        _collider.isTrigger = transform.position.y > Pos.y;
     }
     //[ContextMenu("collider")]
     //private void Colider()

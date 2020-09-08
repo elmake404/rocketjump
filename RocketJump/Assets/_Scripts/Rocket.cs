@@ -15,7 +15,7 @@ public class Rocket : MonoBehaviour
     {
         RaycastHit hit;
         Debug.DrawRay(transform.position, -transform.forward * 10, Color.yellow);
-        if (Physics.Raycast(transform.position + Vector3.back, -transform.forward, out hit, 10)
+        if (Physics.Raycast(transform.position + Vector3.back, -transform.forward, out hit, 3)
             && hit.collider.tag == "Wall")
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
