@@ -47,7 +47,7 @@ MonoBehaviour:
   "_rb\u0421arrier": {fileID: 0}
   _roket: {fileID: 8894414924300829227, guid: 92804e445c03cc74cb6c23be274bf65e, type: 3}
   _shotPos: {fileID: 6152039865897872709}
-  _powerRecoil: 2
+  _powerRecoil: 125
   _timeBeforShotConst: 0.5
 --- !u!1 &5201535271601103081
 GameObject:

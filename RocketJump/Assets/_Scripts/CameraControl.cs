@@ -36,22 +36,6 @@ public class CameraControl : MonoBehaviour
             }
             _player._rocketLauncher.Shot();
         }
-
-        //if (Input.GetMouseButton(0))
-        //{
-        //    float Z = _protractor.transform.position.z - _cam.transform.position.z;
-
-        //    _currentPos = _cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Z));
-
-        //    _protractor.transform.LookAt(_currentPos);
-        //    _player.ShotDirection(_protractor.eulerAngles);
-
-        //}
-        //else if (Input.GetMouseButtonUp(0))
-        //{
-        //    _player.ShotDirection(_protractor.eulerAngles);
-        //    _player._rocketLauncher.Shot(_player._rocketLauncher.transform.forward);
-        //}
     }
 
     void FixedUpdate()

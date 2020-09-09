@@ -30,9 +30,13 @@ public class RocketLauncher : MonoBehaviour
     {
         if (_timeBeforShot<=0)
         {
-            _rbСarrier.AddForce(-transform.forward * 200, ForceMode.Acceleration);
+            _rbСarrier.AddForce(-transform.forward * _powerRecoil, ForceMode.Acceleration);
             Instantiate(_roket, _shotPos.position, transform.rotation);
-            _timeBeforShot = _timeBeforShotConst;
+            _timeBeforShot += _timeBeforShotConst;
         }
+    }
+    public void PenaltyTime(float time)
+    {
+        _timeBeforShot += time;
     }
 }
