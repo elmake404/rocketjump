@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    private Vector3 _currentPos;
+    [SerializeField]
     public RocketLauncher _rocketLauncher;
     private Camera _cam;
     [SerializeField]
@@ -19,28 +21,52 @@ public class Player : MonoBehaviour
         TransformMain = transform;
         _cam = Camera.main;
     }
-
-    public void ShotDirection(Vector3 Direction)
+    void Update()
     {
-        if (Direction.x>=0)
+        if (Input.GetMouseButton(0))
         {
-            transform.eulerAngles = new Vector3(0,90,0);
-        }
-        else
-        {
-            transform.eulerAngles = new Vector3(0, 270, 0);
-        }
+            float Z = _rocketLauncher.transform.position.z - _cam.transform.position.z;
 
-        _rocketLauncher.transform.forward = Direction;
+            _currentPos = _cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Z));
+
+            if ((Mathf.Round(transform.eulerAngles.y) == 270 && _currentPos.x > transform.position.x)
+                || (Mathf.Round(transform.eulerAngles.y) == 90 && _currentPos.x < transform.position.x))
+            {
+                transform.Rotate(Vector3.up * 180);
+            }
+
+            _currentPos.z = _rocketLauncher.transform.position.z;
+            _rocketLauncher.transform.LookAt(_currentPos);
+            _rocketLauncher.Shot();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            //_currentPos.z = transform.position.z;
+            //Vector3 direction = -(_currentPos - transform.position).normalized;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag=="Enemy")
+        if (collision.collider.tag == "Enemy")
         {
             Repulsion(collision.collider.transform.position);
             _rocketLauncher.PenaltyTime(3);
         }
     }
+
+    //public void ShotDirection(Vector3 Direction)
+    //{
+    //    if (Direction.x>=0)
+    //    {
+    //        transform.eulerAngles = new Vector3(0,90,0);
+    //    }
+    //    else
+    //    {
+    //        transform.eulerAngles = new Vector3(0, 270, 0);
+    //    }
+
+    //    _rocketLauncher.transform.forward = Direction;
+    //}
     private void Repulsion (Vector3 target)
     {
         Vector3 DirectionRepulsion = -(target - transform.position).normalized;
