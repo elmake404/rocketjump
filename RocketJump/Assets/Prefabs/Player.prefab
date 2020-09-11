@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a7c448f20885e4eb680813aaad3322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentPos: {x: 0, y: 0, z: 0}
   _rocketLauncher: {fileID: 4272521735558735627}
   _rb: {fileID: 7568734691420750944}
 --- !u!54 &7568734691420750944
@@ -199,6 +200,11 @@ PrefabInstance:
       propertyPath: "_rb\u0421arrier"
       value: 
       objectReference: {fileID: 7568734691420750944}
+    - target: {fileID: 4921572370950712836, guid: e130ab71e21af38458aa547e1a17c1d7,
+        type: 3}
+      propertyPath: _timeBeforShotConst
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e130ab71e21af38458aa547e1a17c1d7, type: 3}
 --- !u!4 &8152029215637299711 stripped

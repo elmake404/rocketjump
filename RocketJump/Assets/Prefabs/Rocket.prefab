@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _radius: 5
-  _forse: 1000
+  _forse: 100
   _explosion: {fileID: 4102920544889217586, guid: 74a65e19273b20c4fa12d696a54e8e9e,
     type: 3}
 --- !u!33 &8197877924949021056
